@@ -1,0 +1,9 @@
+{
+  "j": [{
+          "link": "http://www.redusers.com/noticias/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'carrousel_box w191'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        }
+  ]
+}

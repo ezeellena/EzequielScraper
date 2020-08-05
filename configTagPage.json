@@ -1,0 +1,174 @@
+{
+  "j": [{
+          "link": "https://diariolaopinion.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\",{\"class\": 'noticia'})",
+          "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1)",
+          "path2": "i.find(\"a\", {\"class\": 'link'}).replace(url,\"\")"
+        },{
+          "link": "https://www.rosario3.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "re.search('<a class=\"cover-link\" href=\"(.*)html\"' ,str(i)).group(1) + \"html\".replace(url,\"\")"
+        },{
+          "link": "https://www.clarin.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://www.pais24.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'magazine-item-main'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.lacapital.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://regionnet.com.ar/noticias/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://jackemate.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.elciudadanoweb.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-body'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://casildaya.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1).replace(url,\"\")"
+        },{
+          "link": "http://www.eltreboldigital.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-thumb'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://edicionuno.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'title-heading'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://elcolonodeloeste.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-meta-info'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.esperanzadiaxdia.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://www.radiomariajuana.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://santotomealdia.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.lanacion.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.pagina12.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.ellitoral.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://rosarionoticias.gob.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'nota-contenido-inner'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://puertonegocios.com/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'hms-details'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://puertonegocios.com/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'hms-post'})",
+          "BuscarNoticia2": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'hmw-grid-post'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://www.paralelo28.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-block-span6'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.on24.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-block-span4'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://chequeado.com/ultimas-noticias/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://www.reconquista.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'tt-post-info'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://regionoeste.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "http://radioamanecer.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-thumb'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://30diasdenoticias.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.sunchaleshoy.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-block-span12'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://chequeado.com/tag/falso-en-las-redes/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"]"
+        },{
+          "link": "https://www.sanjorgevirtual.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\",{\"class\": ['items-row','cols-2','','']})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.lagaceta.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'cardBody'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.elliberal.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"h2\", {\"class\": 'h3'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.perfil.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.minutouno.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.losandes.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.lavoz.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.eldia.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://tn.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.telam.com.ar/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'note-module'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.cronista.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.mdzol.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        }
+  ]
+}
