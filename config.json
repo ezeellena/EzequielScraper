@@ -3,5 +3,8 @@
   "id_chat" : "-489973892" ,
   "token" : "bot1294708386:AAHCE0tRcq-hqT_b14UbHaArxs9q4XCj5fs",
   "NombreGrupo" : "Grupo 1",
-  "Tema": "perotti"
+  "Tema": "perotti",
+  "id_chatGSF": "-1001404161881",
+  "NombreGrupoGSF" : "GSF",
+  "TemaGSF": "Ultima Noticia"
 }
