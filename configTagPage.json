@@ -1,12 +1,16 @@
 {
   "j": [{
+          "link": "https://www.santafe.gov.ar/noticias",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'ranking-news'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
           "link": "https://diariolaopinion.com.ar/",
-          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\",{\"class\": 'noticia'})",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\",{\"class\": 'noticia'})",
           "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1)",
           "path2": "i.find(\"a\", {\"class\": 'link'}).replace(url,\"\")"
         },{
           "link": "https://www.rosario3.com/",
-          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
           "path": "re.search('<a class=\"cover-link\" href=\"(.*)html\"' ,str(i)).group(1) + \"html\".replace(url,\"\")"
         },{
           "link": "https://www.clarin.com/",
@@ -169,6 +173,28 @@
           "link": "https://www.mdzol.com/",
           "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
           "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://notife.com/",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-block-span6'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.letrap.com.ar/santa-fe",
+          "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'datos_nota'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.santafe.gob.ar/noticias",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+          "link": "https://www.lacapital.com.ar/secciones/opinion.html",
+          "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'ranking-news'})",
+          "path": "i.a[\"href\"].replace(url,\"\")"
+        },{
+            "link": "https://www.lacapital.com.ar/secciones/laregion.html",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "path": "i.a[\"href\"].replace(url,\"\")"
         }
+
+
   ]
 }
