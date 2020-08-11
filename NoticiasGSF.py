@@ -51,7 +51,7 @@ def enviar_noticiasGSF(arr,titulo,copete):
             if a != "" and not (link_enviado(a)):
                 ta = True
         if ta:
-            requests.post('https://api.telegram.org/' + url_api, data={'chat_id': "-489973892", 'text': men_mensaje + men_titulo + men_copete})
+            requests.post('https://api.telegram.org/' + url_api, data={'chat_id': "-1001404161881", 'text': men_mensaje + men_titulo + men_copete})
             for m in men:
                 requests.post('https://api.telegram.org/' + url_api,
                               data={'chat_id': "-489973892", 'text': m})
