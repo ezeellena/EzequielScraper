@@ -1,39 +1,47 @@
 {
   "j": [{
             "link": "https://www.lacapital.com.ar/secciones/laregion.html",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
-            "Nota": "driver.find_element_by_id('note-body').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('news-body-paragraph').text"
+            "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"name\"]",
+            "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"description\"]",
+            "Nota": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"articleBody\"]",
+            "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"datePublished\"]",
+            "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"dateModified\"]"
         },{
             "link": "https://www.elciudadanoweb.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-body'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('entry-excerpt').text",
             "Nota": "driver.find_element_by_class_name('entry-content').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "fechaPublicacion": "driver.find_element_by_class_name('entry-date.published').get_attribute('datetime')"
         },{
             "link": "https://diariolaopinion.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\",{\"class\": 'noticia'})",
+            "BuscarNoticia2": "",
             "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1)",
-            "tituloNoticia": "driver.find_element_by_class_name('titulo').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('detalle').text",
-            "Nota": "driver.find_element_by_class_name('fullpost__cuerpo').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('fecha').text"
+            "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
+            "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"description\"]",
+            "Nota": "BeautifulSoup(response2, \"html.parser\").find(\"div\",{\"class\": \"cuerpo fullpost__cuerpo\"}).text",
+            "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"datePublished\"]",
+            "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"dateModified\"]"
         },{
             "link": "https://www.rosario3.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.find(\"a\",{\"class\": 'cover-link'})[\"href\"]",
-            "tituloNoticia": "driver.find_element_by_id('main-title').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('bajada').text",
-            "Nota": "driver.find_element_by_class_name('article-body').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('header-date').text"
+            "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
+            "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"description\"]",
+            "Nota": "BeautifulSoup(response2, \"html.parser\").find(\"div\", {\"class\": 'article-body'}).text",
+            "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"datePublished\"]",
+            "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"dateModified\"]"
         },{
             "link": "https://www.clarin.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('bajada').text",
@@ -42,22 +50,26 @@
         },{
             "link": "http://www.pais24.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'magazine-item-main'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('article-header').text",
+            "tituloNoticia": "driver.find_element_by_class_name('article-header.clearfix').text",
             "descripcionNoticia": "driver.find_element_by_class_name('article-intro').text",
-            "Nota": "driver.find_element_by_class_name('article-content-main').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('published ').text"
+            "Nota": "driver.find_element_by_class_name('article-content').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('published.hasTooltip').text"
         },{
             "link": "https://www.lacapital.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
-            "Nota": "driver.find_element_by_id('note-body').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('news-body-paragraph').text"
+            "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"name\"]",
+            "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"description\"]",
+            "Nota": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"articleBody\"]",
+            "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"datePublished\"]",
+            "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"dateModified\"]"
         },{
             "link": "https://jackemate.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
             "Nota": "driver.find_element_by_class_name('entry-content').text",
@@ -65,102 +77,107 @@
         },{
             "link": "https://casildaya.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1).replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('titulo').text",
             "descripcionNoticia": "driver.find_element_by_class_name('detalle').text",
-            "Nota": "driver.find_element_by_class_name('fullpost__cuerpo').text",
+            "Nota": "driver.find_element_by_class_name('cuerpo.fullpost__cuerpo').text",
             "fechaPublicacion": "driver.find_element_by_class_name('fecha').text"
-        },{
-            "link": "https://casildaya.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
-            "path": "re.search('a href=\"(.*)\">' ,str(i)).group(1).replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "Nota": "driver.find_element_by_class_name('entry-title').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
         },{
             "link": "http://edicionuno.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'title-heading'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "Nota": "driver.find_element_by_class_name('entry-content').text"
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
+            "Nota": "driver.find_element_by_xpath('//div[@class='entry-content']').text"
         },{
             "link": "https://elcolonodeloeste.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-meta-info'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('tdb-title-text').text",
-            "Nota": "driver.find_element_by_class_name('tdb-block-inner').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "Nota": "driver.find_element_by_class_name('tdb-block-inner.td-fix-index').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://www.esperanzadiaxdia.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('single-post-title').text",
+            "tituloNoticia": "driver.find_element_by_class_name('post-title.single-post-title.entry-title').text",
             "descripcionNoticia": "driver.find_element_by_tag_name('h5').text",
-            "Nota": "driver.find_element_by_class_name('inner-post-entry entry-content').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "Nota": "driver.find_element_by_id('penci-post-entry-inner').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "http://www.radiomariajuana.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('fittexted_for_single_post_title').text",
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
             "Nota": "driver.find_element_by_class_name('entry-inner').text"
         },{
             "link": "https://santotomealdia.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('name').text",
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
             "descripcionNoticia": "driver.find_element_by_class_name('copete').text",
-            "Nota": "driver.find_element_by_class_name('desarrollo-nota').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('tope-nota').text"
+            "Nota": "driver.find_element_by_class_name('desarrollo-nota.clearfix').text"
         },{
             "link": "https://www.pagina12.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('article-title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('article-summary').text",
             "Nota": "driver.find_element_by_class_name('article-text').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('time').text"
+            "fechaPublicacion": "driver.find_element_by_class_name('time')"
         },{
             "link": "https://www.ellitoral.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('umclasetitulo_interior').text",
-            "Nota": "driver.find_element_by_class_name('cuerpo_interior')",
+            "tituloNoticia": "driver.find_element_by_class_name('umclasetitulo_interior.container').text",
+            "Nota": "driver.find_element_by_class_name('cuerpo_interior').text",
             "fechaPublicacion": "driver.find_element_by_class_name('fecha_uminterior').text"
         },{
             "link": "https://rosarionoticias.gob.ar/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'nota-contenido-inner'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('noticia-titular').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('noticia-bajada')",
-            "Nota": "driver.find_element_by_class_name('noticia-contenido')",
+            "descripcionNoticia": "driver.find_element_by_class_name('noticia-bajada').text",
+            "Nota": "driver.find_element_by_class_name('noticia-contenido').text",
             "fechaPublicacion": "driver.find_element_by_class_name('noticia-fecha').text"
         },{
             "link": "https://puertonegocios.com/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'hms-details'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "Nota": "driver.find_element_by_class_name('entry-content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-meta').text"
+            "Nota": "driver.find_element_by_class_name('entry-content').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "http://www.paralelo28.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-block-span6'})",
+            "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-thumb'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('td-post-title').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('noticia-bajada')",
-            "Nota": "driver.find_element_by_class_name('td-post-content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('td-post-content').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://www.on24.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-block-span4'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "descripcionNoticia": "driver.find_element_by_class_name('td-post-sub-title')",
-            "Nota": "driver.find_element_by_class_name('td-post-content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('td-post-sub-title').text",
+            "Nota": "driver.find_element_by_class_name('td-post-content').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://chequeado.com/ultimas-noticias/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('title').text",
             "Nota": "driver.find_element_by_class_name('content')",
@@ -168,66 +185,106 @@
         },{
             "link": "http://www.reconquista.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'tt-post-info'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('c-h1').text",
-            "descripcionNoticia": "driver.find_element_by_tag_name('h2e')",
-            "Nota": "driver.find_element_by_class_name('simple-text')",
-            "fechaPublicacion": "driver.find_element_by_class_name('tt-post-date-single').text"
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('simple-text.size-4.tt-content.title-droid.margin-big').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('tt-blog-user-content').text"
         },{
            "link": "https://regionoeste.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('fullpost__titulo').text",
-            "descripcionNoticia": "driver.find_element_by_tag_name('fullpost__copete')",
-            "Nota": "driver.find_element_by_class_name('fullpost__cuerpo')",
+            "descripcionNoticia": "driver.find_element_by_tag_name('fullpost__copete').text",
+            "Nota": "driver.find_element_by_class_name('fullpost__cuerpo').text",
             "fechaPublicacion": "driver.find_element_by_class_name('fecha').text"
         },{
            "link": "http://radioamanecer.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-module-thumb'})",
+            "BuscarNoticia": "BeautifulSoup(response).find_all(\"div\", {\"class\": 'td-block-span6'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "Nota": "driver.find_element_by_class_name('td-post-content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date').text"
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
+            "Nota": "driver.find_element_by_class_name('td-post-content').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://30diasdenoticias.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('titulo mb-3').text",
-            "descripcionNoticia": "driver.find_element_by_tag_name('copete')",
-            "Nota": "driver.find_element_by_class_name('desarrollo')",
-            "fechaPublicacion": "driver.find_element_by_class_name('fya').text"
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('copete.mb-3').text",
+            "Nota": "driver.find_element_by_class_name('desarrollo.clearfix mb-5').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('fya.text-600.d-inline-flex.pb-2.pr-1.mb-4').text"
         },{
+            "link": "http://www.lavozderosario.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-content'})",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('entry-header').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('entry-content.clearfix').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('entry-date.published').get_attribute('datetime')"
+        },{
+            "link": "http://www.lavozderosario.com/category/politica/",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-content'})",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('entry-header').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('entry-content.clearfix').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('entry-date.published').get_attribute('datetime')"
+        },{
+            "link": "http://www.lavozderosario.com/category/santa-fe/",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-content'})",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('entry-header').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('entry-content.clearfix').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('entry-date.published').get_attribute('datetime')"
+          },{
             "link": "https://www.sunchaleshoy.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-block-span12'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
-            "Nota": "driver.find_element_by_class_name('td-post-content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('td-post-date').text"
+            "tituloNoticia": "driver.find_element_by_class_name('entry-header').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('entry-content.clearfix')",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://chequeado.com/tag/falso-en-las-redes/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"]",
             "tituloNoticia": "driver.find_element_by_class_name('title').text",
-            "Nota": "driver.find_element_by_class_name('content')",
-            "fechaPublicacion": "driver.find_element_by_class_name('time').text"
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('content').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('table_time').text"
         },{
             "link": "https://www.sanjorgevirtual.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\",{\"class\": ['items-row','cols-2','','']})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('page-header').text",
-            "Nota": "driver.find_element_by_class_name('articleBody')",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_xpath(\"//div[@itemprop='articleBody']\").text",
             "fechaPublicacion": "driver.find_element_by_class_name('published').text"
         },{
-           "link": "https://www.lagaceta.com.ar/",
+            "link": "https://www.lagaceta.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'cardBody'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_id('spktitle').text",
-            "descripcionNoticia": "driver.find_element_by_id('spksumary')",
-            "Nota": "driver.find_element_by_class_name('newsBody')",
-            "fechaPublicacion": "driver.find_element_by_class_name('info').text"
+            "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
+            "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"description\"]",
+            "Nota": "BeautifulSoup(response2, \"html.parser\").find(\"div\", {\"class\": 'newsBody'}).text",
+            "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"datePublished\"]",
+            "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"dateModified\"]"
         },{
-           "link": "https://www.elliberal.com.ar/",
+            "link": "https://www.elliberal.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"h2\", {\"class\": 'h3'})",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"h4\", {\"class\": 'h5'})",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('z-post-title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('z-post-excerpt')",
@@ -236,91 +293,106 @@
         },{
            "link": "https://www.perfil.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
-            "descripcionNoticia": "driver.find_element_by_tag_name('h2')",
-            "Nota": "driver.find_element_by_class_name('no-copy-paste')",
-            "fechaPublicacion": "driver.find_element_by_class_name('articuloDateTime').text"
+            "descripcionNoticia": "driver.find_element_by_tag_name('h2').text",
+            "Nota": "driver.find_element_by_class_name('no-copy-paste').text",
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@name=\"datePublished\"]').get_attribute(\"content\")"
         },{
            "link": "https://www.minutouno.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('title').text",
+            "tituloNoticia": "driver.find_element_by_xpath('//h2[@class=\"title\"]').text",
             "descripcionNoticia": "driver.find_element_by_class_name('preview').text",
             "Nota": "driver.find_element_by_class_name('region-3').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('articuloDateTime').text"
+            "fechaPublicacion": "driver.find_element_by_xpath('//span[@class=\"date\"]').text"
         },{
            "link": "https://www.losandes.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('h1.boldbold.mt1.col-12.md-col-8').text",
             "descripcionNoticia": "driver.find_element_by_class_name('h3.col-12.md-col-8.font-src.bold.black-3.mt2.mb1').text",
-            "Nota": "driver.find_element_by_class_name('col.col-12.sm-col-12.md-col-8.pr2.pnx2.body').text"
+            "Nota": "driver.find_element_by_class_name('col.col-12.sm-col-12.md-col-8.pr2.pnx2.body').text",
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@name=\"pubdate\"]').get_attribute(\"content\")"
         },{
            "link": "https://www.lavoz.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('title.is-font-serif.is-size-1-desktop.is-size-2-tablet').text",
+            "tituloNoticia": "driver.find_element_by_tag_name('h1').text",
             "descripcionNoticia": "driver.find_element_by_class_name('node-content.teaser.is-four-fifths-desktop.is-margin-t').text",
-            "Nota": "driver.find_element_by_class_name('col.col-12.sm-col-12.md-col-8.pr2.pnx2.body').text"
+            "Nota": "driver.find_element_by_class_name('node-content.content.body').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
            "link": "https://www.eldia.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('titulo_nota').text",
             "descripcionNoticia": "driver.find_element_by_class_name('bajada').text",
-            "Nota": "driver.find_element_by_class_name('cuerpo_nota').text",
+            "Nota": "driver.find_element_by_class_name('body.text-resizable.cuerpo_nota').text",
             "fechaPublicacion": "driver.find_element_by_class_name('fecha').text"
         },{
            "link": "https://tn.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('article__title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('article__dropline').text",
             "Nota": "driver.find_element_by_class_name('article__body').text",
-            "fechaPublicacion": "driver.find_element_by_tag_name('time').text"
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://www.telam.com.ar/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'note-module'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_tag_name('h2').text",
-            "descripcionNoticia": "driver.find_element_by_tag_name('p').text",
+            "tituloNoticia": "driver.find_element_by_xpath(\"//div[@class='head-content']/h2\").text",
+            "descripcionNoticia": "driver.find_element_by_xpath(\"//div[@class='head-content']/p\").text",
             "Nota": "driver.find_element_by_class_name('editable-content.clearfix').text",
             "fechaPublicacion": "driver.find_element_by_class_name('data').text"
         },{
             "link": "https://www.cronista.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('titulo-nota').text",
             "descripcionNoticia": "driver.find_element_by_class_name('bajada').text",
             "Nota": "driver.find_element_by_class_name('article-container').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('time').text"
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@itemprop=\"datePublished\"]').get_attribute(\"content\")"
         },{
             "link": "https://www.mdzol.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('title.newsfull__title ').text",
+            "tituloNoticia": "driver.find_element_by_class_name('title-container').text",
             "descripcionNoticia": "driver.find_element_by_class_name('newsfull__excerpt').text",
             "Nota": "driver.find_element_by_class_name('modules-container').text",
             "fechaPublicacion": "driver.find_element_by_class_name('newsfull__time').text"
         },{
             "link": "https://notife.com/",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-block-span6'})",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-meta-info-container'})",
             "path": "i.a[\"href\"].replace(url,\"\")",
-            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
+            "tituloNoticia": "driver.find_element_by_xpath(\"//h1[@class='entry-title']\").text",
+            "descripcionNoticia": "",
             "Nota": "driver.find_element_by_class_name('td-post-content').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date updated.td-module-date').text"
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
         },{
             "link": "https://www.letrap.com.ar/santa-fe",
             "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'datos_nota'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('nota_titulo').text",
             "descripcionNoticia": "driver.find_element_by_class_name('intro').text",
             "Nota": "driver.find_element_by_id('notas').text",
-            "fechaPublicacion": "driver.find_element_by_class_name('entry-date.updated.td-module-date').text"
+            "fechaPublicacion": "driver.find_element_by_class_name('notapage_fecha').text"
         },{
            "link": "https://www.santafe.gob.ar/noticias",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('title-post').text",
             "descripcionNoticia": "driver.find_element_by_class_name('headline-post').text",
@@ -329,6 +401,7 @@
         },{
             "link": "https://www.lacapital.com.ar/secciones/opinion.html",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'ranking-news'})",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
@@ -337,11 +410,197 @@
         },{
             "link": "https://www.lacapital.com.ar/secciones/laregion.html",
             "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
             "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
             "Nota": "driver.find_element_by_id('note-body').text",
             "fechaPublicacion": "driver.find_element_by_class_name('news-body-paragraph.paragraph-date').text"
+        },{
+            "link": "https://www.lacapital.com.ar/secciones/economia.html",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
+            "Nota": "driver.find_element_by_id('note-body').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('news-body-paragraph.paragraph-date').text"
+        },{
+            "link": "https://sl24.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('entry-title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('entry-excerpt').text",
+            "Nota": "driver.find_element_by_class_name('contenido').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
+        },{
+            "link": "https://www.ambito.com/contenidos/nacional.html",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('excerpt').text",
+            "Nota": "driver.find_element_by_class_name('col-12.col-md-12.col-lg-8').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('date').text"
+        },{
+            "link": "https://www.ambito.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('excerpt').text",
+            "Nota": "driver.find_element_by_class_name('col-12.col-md-12.col-lg-8').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('date').text"
+        },{
+            "link": "https://panamericana1057.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('titulo').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('detalle').text",
+            "Nota": "driver.find_element_by_class_name('cuerpo.fullpost__cuerpo').text",
+            "fechaPublicacion": "driver.find_element_by_xpath(\"//meta[@property='article:published_time']\").get_attribute(\"content\")"
+        },{
+            "link": "https://www.unosantafe.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('news-header-title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('news-header-description').text",
+            "Nota": "driver.find_element_by_id('note-body').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('news-body-paragraph.paragraph-date').text"
+        },{
+            "link": "https://sinmordaza.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-module-meta-info'}))",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('tdb-title-text').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('tdb-block-inner.td-fix-index').text",
+            "Nota": "driver.find_element_by_class_name('wpb_column.vc_column_container.tdc-inner-column.td-pb-span8').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')"
+        },{
+            "link": "https://www.airedesantafe.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('article-title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('article-sub-title ').text",
+            "Nota": "driver.find_element_by_xpath('//article[@class='article-body']').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('article-date').text"
+        },{
+            "link": "https://www.derf.com.ar",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('article-title').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('article-sub-title ').text",
+            "Nota": "driver.find_elements_by_class_name('cuerpo')",
+            "fechaPublicacion": "driver.find_element_by_class_name('article-date').text"
+        },{
+            "link": "https://latribunadelsur.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'inside'})",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('titulo').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('detalle').text",
+            "Nota": "driver.find_element_by_class_name('fullpost__cuerpo').text",
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@property=\"article:published_time\"]').get_attribute(\"content\")"
+        },{
+            "link": "https://viapais.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('body.ampstart-dropcap').text",
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@property=\"article:published_time\"]').get_attribute(\"content\")",
+            "fechaPublicacionModificada": "driver.find_element_by_xpath('//meta[@property=\"article:modified_time\"]').get_attribute(\"content\")"
+        },{
+            "link": "https://rosarionuestro.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('contenido').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "http://www.eltreboldigital.com.ar/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'td-module-thumb'})",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('td-post-title').text",
+            "descripcionNoticia": "",
+            "Nota": "driver.find_element_by_class_name('td-post-content').text",
+            "fechaPublicacion": "driver.find_element_by_tag_name('time').get_attribute('datetime')",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://www.infobae.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'card-container'})",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('article-headline').text",
+            "descripcionNoticia": "driver.find_element_by_class_name('article-subheadline').text",
+            "Nota": "driver.find_elements_by_class_name('font_tertiary.paragraph')",
+            "fechaPublicacion": "driver.find_element_by_class_name('datetime').text",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://urgente24.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"span\", {\"class\": 'field-content'})",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_class_name('node__title.title').text",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_elements_by_class_name('node__content.clearfix')",
+            "fechaPublicacion": "driver.find_element_by_class_name('node-info-item.node-info-item-date').text",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://www.otrodia.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'mp-inner-container'})",
+            "BuscarNoticia2": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'mpg-content'})",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath(\"//meta[@property='og:title']\").get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_elements_by_class_name('entry-content.with-sidebar.float-left.clearfix')",
+            "fechaPublicacion": "driver.find_element_by_xpath(\"//meta[@property='article:published_time']\").get_attribute(\"content\")",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://www.impulsonegocios.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('entry').text",
+            "fechaPublicacion": "driver.find_element_by_xpath(\"//meta[@property='article:published_time']\").get_attribute(\"content\")",
+            "fechaPublicacionModificada": "driver.find_element_by_xpath(\"//meta[@property='article:modified_time']\").get_attribute(\"content\")"
+        },{
+            "link": "https://www.rosarioplus.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@name=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@name=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('entry-body').text",
+            "fechaPublicacion": "",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://www.lapoliticaonline.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"h2\", {\"class\": 'title'})",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('body.vsmcontent').text",
+            "fechaPublicacion": "driver.find_element_by_class_name('time').text",
+            "fechaPublicacionModificada": ""
+        },{
+            "link": "https://adn979.com/",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
+            "BuscarNoticia2": "",
+            "path": "i.a[\"href\"].replace(url,\"\")",
+            "tituloNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:title\"]').get_attribute(\"content\")",
+            "descripcionNoticia": "driver.find_element_by_xpath('//meta[@property=\"og:description\"]').get_attribute(\"content\")",
+            "Nota": "driver.find_element_by_class_name('cuerpo.fullpost__cuerpo').text",
+            "fechaPublicacion": "driver.find_element_by_xpath('//meta[@property=\"article:published_time\"]').get_attribute(\"content\")",
+            "fechaPublicacionModificada": "driver.find_element_by_xpath('//meta[@property=\"article:modified_time\"]').get_attribute(\"content\")"
         }
 
   ]
