@@ -55,7 +55,7 @@
             "fechaPublicacionModificada": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"dateModified\"]"
         },{
             "link": "https://www.clarin.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -152,7 +152,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.esperanzadiaxdia.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -166,7 +166,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "http://www.radiomariajuana.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -180,7 +180,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://santotomealdia.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -194,7 +194,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.pagina12.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -208,7 +208,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.ellitoral.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -261,7 +261,7 @@
             "fechaPublicacion": "BeautifulSoup(response2, \"html.parser\").find(\"span\", {\"class\":\"tt-post-date-single\"}).text"
         },{
             "link": "https://regionoeste.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -486,7 +486,7 @@
             "fechaPublicacionModificada2": ""
         },{
             "link": "https://www.cronista.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -500,7 +500,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.mdzol.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -670,14 +670,14 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://sinmordaza.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-module-meta-info'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'td-module-container td-category-pos-image'})",
             "BuscarNoticia2": "",
-            "path": "i.a[\"href\"].replace(url,\"\")",
+            "path": "i.find_all(\"a\")[2][\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][4][\"headline\"]",
             "tituloNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
             "descripcionNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:description\"})[\"content\"]",
             "descripcionNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"div\", {\"class\":\"tdb-block-inner td-fix-index\"})",
-            "Nota": "BeautifulSoup(response2, \"html.parser\").find(\"div\", {\"class\":\"td-pb-border-top td_block_template_1 td-post-content tagdiv-type\"}).text",
+            "Nota": "BeautifulSoup(response2, \"html.parser\").find_all(\"div\", {\"class\":\"tdb-block-inner td-fix-index\"})[4].text",
             "Nota2": "",
             "fechaPublicacion": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][4][\"datePublished\"]",
             "fechaPublicacion2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:published_time\"})[\"content\"]",
@@ -715,7 +715,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://latribunadelsur.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -729,8 +729,8 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://viapais.com.ar/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
-            "BuscarNoticia2": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\":\"inside\"})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\":\"inside\"})",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][2][\"name\"]",
             "tituloNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -743,7 +743,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://rosarionuestro.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][2][\"name\"]",
@@ -757,7 +757,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.infobae.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'card-container'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'card-container'})",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -771,8 +771,8 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://urgente24.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"span\", {\"class\": 'field-content'})",
-            "BuscarNoticia2": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'mpg-content'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"span\", {\"class\": 'field-content'})",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'mpg-content'})",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "BeautifulSoup(response2, \"html.parser\").find(\"h1\", {\"class\":\"node__title title\"}).text",
             "tituloNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -785,8 +785,8 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"i\", {\"class\":\"fa fa-calendar\"}).text"
         },{
             "link": "https://www.otrodia.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'mp-inner-container'})",
-            "BuscarNoticia2": "BeautifulSoup(response, \"lxml\").find_all(\"div\", {\"class\": 'mpg-content'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'mp-inner-container'})",
+            "BuscarNoticia2": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'mpg-content'})",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][2][\"name\"]",
             "tituloNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
@@ -799,7 +799,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.impulsonegocios.com",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"@graph\"][2][\"name\"]",
@@ -813,7 +813,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.rosarioplus.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"article\")",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
@@ -827,7 +827,7 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.lapoliticaonline.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"lxml\").find_all(\"h2\", {\"class\": 'title'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"h2\", {\"class\": 'title'})",
             "BuscarNoticia2": "",
             "path": "i.a[\"href\"].replace(url,\"\")",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[\"headline\"]",
