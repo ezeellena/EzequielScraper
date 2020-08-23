@@ -83,15 +83,16 @@ class RSSParser(object):
                 response = urllib.request.urlopen(url).read()
         except Exception as e:
             print(" 58 - response ", e)
+        try:
+            tmpItems = eval(urlytag["BuscarNoticia"])
+            if urlytag["BuscarNoticia2"] != "":
+                noticias2 = eval(urlytag["BuscarNoticia2"])
+                tmpItems.extend(eval(noticias2))
 
-        tmpItems = eval(urlytag["BuscarNoticia"])
-        if urlytag["BuscarNoticia2"] != "":
-            noticias2 = eval(urlytag["BuscarNoticia2"])
-            tmpItems.extend(eval(noticias2))
-        urlCortada = urlCortada.replace("http:", "").replace("//", "").replace(".", "").replace("www", "").replace(
-            "https:", "").replace("/", "").replace("\n", "")
+        except Exception as e:
+            print(" 58 - Obtener noticias ", e)
+        urlCortada = urlCortada.replace("http:", "").replace("//", "").replace(".", "").replace("www", "").replace("https:", "").replace("/", "").replace("\n", "")
         fic = open("C:/Users/eellena/Desktop/Prueba/" + urlCortada + ".txt", "w")
-
         ficComparativo = open("C:/Users/eellena/Desktop/Prueba/" + urlCortada + "LOG.txt", "w", encoding='utf-8')
         for i in tmpItems:
 
@@ -228,7 +229,7 @@ class RSSParser(object):
                                 fechaPublicacionModificacion = eval(urlytag["fechaPublicacionModificada2"])
                             except Exception as e:
                                 print(e)
-                                fechaPublicacionModificacion = "No se pudo obtener fecha de modificacion"
+                                fechaPublicacionModificacion = "No se pudo obtener fecha de modificacion o no contiene"
 
                         data = {"Pagina_Web": link_web,
                                 "Link_Noticia": link_noticia,
@@ -379,13 +380,9 @@ def configuracion():
 
 if __name__ == "__main__":
     configuracion()
-    firefox_profile = webdriver.FirefoxProfile()
-    firefox_profile.set_preference("browser.download.folderList", 2)
-    firefox_profile.set_preference("javascript.enabled", False)
 
-    options = FirefoxOptions()
-    options.add_argument("--headless")
-    driver = webdriver.Firefox(options=options)
+
+
     fic = open(directorio + "Log.txt", "r+")
 
     j = open("configParaIngresarAlLink.json", "r")
