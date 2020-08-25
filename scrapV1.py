@@ -110,13 +110,10 @@ class RSSParser(object):
                 temp12 = ""
 
                 try:
-                    temp8 = eval(tag)
                     temp9 = eval(tag)
-
                     temp10 = ""
                     temp11 = ""
                     temp12 = ""
-                    url2 = url
 
 
                 except:
@@ -163,11 +160,11 @@ class RSSParser(object):
                 print("--------------------------------")
 
                 """
-
+                url2 = ""
                 if temp9[:1] == "/":
                     temp9 = temp9[1:]
-
-                if "http" in temp9:
+                    url2 = url + temp9
+                if url in temp9:
                     url2 = temp9
                     temp9 = ""
 
@@ -178,11 +175,10 @@ class RSSParser(object):
                        "tmpItems": i}
                 if not filtro_repetida(j_i):
                     if filtro_tema(j_i, tema):
-                        link_noticia = url + temp8.replace(url, "")
-                        link_web = urlytag["link"]
+                        link_noticia = j_i["link"]
+                        link_web = url
 
                         response2 = requests.get(link_noticia, headers=headers).text
-                        # driver.get(link_noticia)
 
                         FechaHoraScrapeo = str(datetime.datetime.now())
                         try:
