@@ -344,7 +344,7 @@ def enviar_noticias(arr):
 
 
 def configuracion():
-    f = open("configV1.0.json.json", "r")
+    f = open("configV1.0.json", "r")
 
     global j_config
     j_config = {}
