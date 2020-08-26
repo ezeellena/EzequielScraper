@@ -95,8 +95,8 @@ class RSSParser(object):
         urlCortada = urlCortada.replace("http:", "").replace("//", "").replace(".", "").replace("www", "").replace(
             "https:", "").replace("/", "").replace("\n", "")
 
-        LogErrores = open("./Errores" + urlCortada + "LOG_ERRORES.txt", "w", encoding='utf-8')
-        ArchivoNoticiasCompletas = open("./Noticias" + urlCortada + ".txt", "w", encoding='utf-8')
+        LogErrores = open("./Errores/" + urlCortada + "LOG_ERRORES.txt", "w", encoding='utf-8')
+        ArchivoNoticiasCompletas = open("./Noticias/" + urlCortada + ".txt", "w", encoding='utf-8')
         for i in tmpItems:
 
             try:
@@ -110,9 +110,11 @@ class RSSParser(object):
 
                 try:
                     temp9 = eval(tag)
+
                     temp10 = ""
                     temp11 = ""
                     temp12 = ""
+                    url2 = url
 
 
                 except:
@@ -159,11 +161,10 @@ class RSSParser(object):
                 print("--------------------------------")
 
                 """
-                url2 = ""
                 if temp9[:1] == "/":
                     temp9 = temp9[1:]
-                    url2 = url + temp9
-                if url in temp9:
+
+                if "http" in temp9:
                     url2 = temp9
                     temp9 = ""
 
