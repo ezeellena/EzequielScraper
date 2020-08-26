@@ -15,9 +15,9 @@
             "fechaPublicacionModificada2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"article:modified_time\"})[\"content\"]"
         },{
             "link": "https://www.elciudadanoweb.com/",
-            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"div\", {\"class\": 'article-body'})",
+            "BuscarNoticia": "BeautifulSoup(response, \"html.parser\").find_all(\"article\")",
             "BuscarNoticia2": "",
-            "path": "i.a[\"href\"]",
+            "path": "i.find_all(\"a\")[2][\"href\"]",
             "tituloNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"headline\"]",
             "tituloNoticia2": "BeautifulSoup(response2, \"html.parser\").find(\"meta\", {\"property\":\"og:title\"})[\"content\"]",
             "descripcionNoticia": "json.loads(BeautifulSoup(response2, \"html.parser\").find(\"script\", {\"type\": 'application/ld+json'}).string)[0][\"description\"]",
