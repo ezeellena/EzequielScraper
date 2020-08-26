@@ -95,9 +95,8 @@ class RSSParser(object):
         urlCortada = urlCortada.replace("http:", "").replace("//", "").replace(".", "").replace("www", "").replace(
             "https:", "").replace("/", "").replace("\n", "")
 
-        LogErrores = open("C:/Users/eellena/Desktop/Errores" + urlCortada + "LOG_ERRORES.txt", "w", encoding='utf-8')
-        ArchivoNoticiasCompletas = open("C:/Users/eellena/Desktop/Noticias" + urlCortada + ".txt", "w",
-                                        encoding='utf-8')
+        LogErrores = open("./Errores" + urlCortada + "LOG_ERRORES.txt", "w", encoding='utf-8')
+        ArchivoNoticiasCompletas = open("./Noticias" + urlCortada + ".txt", "w", encoding='utf-8')
         for i in tmpItems:
 
             try:
@@ -245,11 +244,11 @@ class RSSParser(object):
                             print(stringjsonordenado)
                             ArchivoNoticiasCompletas.write(stringjsonordenado + '\n')
                         except Exception as e:
-                            LogErrores.write("Error al crear json:" + e)
+                            LogErrores.write("Error al crear json:" + str(e.args))
                         items.append(link_noticia)
             except Exception as e:
                 print(e)
-                LogErrores.write("Error al crear json:" + e)
+                LogErrores.write("Error al crear json:" + str(e.args))
         ArchivoNoticiasCompletas.close()
         return items
 
@@ -345,7 +344,7 @@ def enviar_noticias(arr):
 
 
 def configuracion():
-    f = open("config.json", "r")
+    f = open("configV1.0.json.json", "r")
 
     global j_config
     j_config = {}
